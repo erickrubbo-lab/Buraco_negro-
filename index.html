@@ -13,10 +13,25 @@
             margin:0,auto;
             padding: 5px;
             border: 5px, solid, rgb(7, 1, 7);
+            display: flexbox;
         }
-        p#travesseiro{
-            color: rgb(170, 140, 173);
+        
+        main{
+            background-color:aliceblue(198, 241, 243);
+            color:rgb(7, 1, 7);
+            text-align: center;
+            max-width: 800px;
+            margin: 0, auto;
         }
+
+        img{
+            width: 150px;
+            height: 150px;
+        }
+.artigo-autor{
+    font-weight:bold;
+}
+
     </style>
 </head>
 <body>
@@ -24,9 +39,29 @@
   <h1>Buraco negro </h1>
   <p id="travesseiro">Uma região do espaço com gravidade tão forte que nada consegue escapar dela, nem mesmo a luz.</p>
   </header>
-  <h2>Por que nem a luz consegue escapar de um buraco negro?</h2>
-  <img src="imagem.png" alt="Vista detalhada de um buraco negro supermassivo no centro de uma galáxia espiral. O buraco negro é uma esfera preta e estática, cercada por um disco de acreção brilhante em tons de laranja, dourado e azul-claro que gira ao seu redor. Jatos intensos de energia e luz disparam verticalmente dos polos do buraco negro em direção ao espaço profundo, cercado por milhões de estrelas e galáxias distantes.">
+<main>
+    <img src="imagem.png" alt="Vista detalhada de um buraco negro supermassivo no centro de uma galáxia espiral. O buraco negro é uma esfera preta e estática, cercada por um disco de acreção brilhante em tons de laranja, dourado e azul-claro que gira ao seu redor. Jatos intensos de energia e luz disparam verticalmente dos polos do buraco negro em direção ao espaço profundo, cercado por milhões de estrelas e galáxias distantes.">
 <p>Por Erick Rubbo</p>
+<h2>Por que nem a luz consegue escapar de um buraco negro?</h2>
+<button>❤<span>0</span></button>
+<button>👎<span>0</span></button>
+</div>
+</main>
 
 </body>
+
+<script>
+  const botoes = document.querySelectorAll("button");
+
+  botoes.forEach(function(botao){
+    botao.addEventListener("click", botaoClicado);
+    function botaoClicado(){
+        console.log("fui clicado");
+        let texto = botao. querySelector("span");
+        texto.textContent++;
+  }
+})
+
+</script>
+
 </html>
