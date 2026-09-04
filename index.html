@@ -1,67 +1,760 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buraco negro</title>
+
+    <title>Universo dos Buracos Negros</title>
+
     <style>
-        header{
-            background-color: rgb(56, 53, 50);
-            color: rgb(225, 218, 218);
-            text-align: center;
-            max-width:800px;
-            margin:0,auto;
-            padding: 5px;
-            border: 5px, solid, rgb(7, 1, 7);
-            display: flexbox;
-        }
-        
-        main{
-            background-color:aliceblue(198, 241, 243);
-            color:rgb(7, 1, 7);
-            text-align: center;
-            max-width: 800px;
-            margin: 0, auto;
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        img{
-            width: 150px;
-            height: 150px;
+        html {
+            scroll-behavior: smooth;
         }
-.artigo-autor{
-    font-weight:bold;
-}
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 50% 20%, #29104f 0%, #090016 35%, #020205 75%);
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           ESTRELAS
+        ========================== */
+
+        .estrelas {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(1px 1px at 40% 70%, white, transparent),
+                radial-gradient(2px 2px at 70% 20%, white, transparent),
+                radial-gradient(1px 1px at 80% 80%, white, transparent),
+                radial-gradient(2px 2px at 10% 90%, white, transparent),
+                radial-gradient(1px 1px at 60% 50%, white, transparent),
+                radial-gradient(2px 2px at 90% 40%, white, transparent);
+            background-size: 250px 250px;
+            animation: estrelas 20s linear infinite;
+        }
+
+        @keyframes estrelas {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(250px);
+            }
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #c4b5fd;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c084fc;
+        }
+
+
+        /* =========================
+           CAPA
+        ========================== */
+
+        .inicio {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 120px 20px 60px;
+        }
+
+        .inicio h1 {
+            font-size: clamp(45px, 8vw, 90px);
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #c084fc,
+                #7c3aed,
+                #ffffff
+            );
+
+            background-size: 300%;
+
+            -webkit-background-clip: text;
+            color: transparent;
+
+            animation: brilho 5s infinite;
+
+            margin-bottom: 20px;
+        }
+
+        @keyframes brilho {
+            0% {
+                background-position: 0%;
+            }
+
+            50% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: 0%;
+            }
+        }
+
+        .inicio p {
+            max-width: 700px;
+
+            font-size: 20px;
+
+            color: #d8b4fe;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           BURACO NEGRO
+        ========================== */
+
+        .buraco-negro {
+            width: 260px;
+            height: 260px;
+
+            margin: 50px auto;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #000000 0%,
+                    #000000 38%,
+                    #4c1d95 40%,
+                    #c084fc 48%,
+                    #7c3aed 55%,
+                    transparent 70%
+                );
+
+            box-shadow:
+                0 0 40px #7c3aed,
+                0 0 80px #9333ea,
+                0 0 130px rgba(168, 85, 247, 0.5);
+
+            animation: girar 8s linear infinite;
+        }
+
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           BOTÃO
+        ========================== */
+
+        .botao {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 15px 30px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            color: white;
+
+            background: linear-gradient(
+                90deg,
+                #7c3aed,
+                #c026d3
+            );
+
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            transform: translateY(-5px) scale(1.05);
+
+            box-shadow: 0 0 40px rgba(192, 132, 252, 0.8);
+        }
+
+
+        /* =========================
+           CONTEÚDO
+        ========================== */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .titulo {
+            text-align: center;
+
+            font-size: 40px;
+
+            margin-bottom: 50px;
+
+            color: #ddd6fe;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background: rgba(24, 10, 45, 0.75);
+
+            border: 1px solid rgba(168, 85, 247, 0.4);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: #c084fc;
+
+            box-shadow:
+                0 15px 40px rgba(139, 92, 246, 0.35);
+        }
+
+        .card h3 {
+            color: #c084fc;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #ddd6fe;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           SEÇÃO CURIOSIDADES
+        ========================== */
+
+        .curiosidades {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        .curiosidade {
+            margin-bottom: 20px;
+
+            padding: 20px 25px;
+
+            background: rgba(12, 5, 25, 0.8);
+
+            border-left: 4px solid #a855f7;
+
+            border-radius: 10px;
+        }
+
+        .curiosidade strong {
+            color: #c084fc;
+        }
+
+
+        /* =========================
+           AVALIAÇÃO
+        ========================== */
+
+        .avaliacao {
+            text-align: center;
+
+            margin: 80px 0;
+
+            padding: 50px 20px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(76, 29, 149, 0.35),
+                    rgba(15, 5, 30, 0.8)
+                );
+
+            border: 1px solid #7c3aed;
+        }
+
+        .avaliacao h2 {
+            font-size: 32px;
+
+            margin-bottom: 30px;
+
+            color: #e9d5ff;
+        }
+
+        .botoes {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+        .botoes button {
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 12px;
+
+            font-size: 18px;
+
+            color: white;
+
+            cursor: pointer;
+
+            background: #4c1d95;
+
+            transition: 0.3s;
+        }
+
+        .botoes button:hover {
+            transform: scale(1.1);
+
+            background: #7c3aed;
+
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+        }
+
+        .contadores {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 40px;
+
+            margin-top: 30px;
+
+            font-size: 20px;
+        }
+
+        #likes {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        #dislikes {
+            color: #f87171;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           RODAPÉ
+        ========================== */
+
+        footer {
+            text-align: center;
+
+            padding: 30px;
+
+            border-top: 1px solid rgba(168, 85, 247, 0.3);
+
+            background: rgba(0, 0, 0, 0.6);
+
+            color: #c4b5fd;
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav .logo {
+                font-size: 17px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .buraco-negro {
+                width: 200px;
+                height: 200px;
+            }
+
+            .inicio p {
+                font-size: 17px;
+            }
+
+            .titulo {
+                font-size: 30px;
+            }
+        }
 
     </style>
+
 </head>
+
+
 <body>
-    <header>
-  <h1>Buraco negro </h1>
-  <p id="travesseiro">Uma região do espaço com gravidade tão forte que nada consegue escapar dela, nem mesmo a luz.</p>
-  </header>
-<main>
-    <img src="imagem.png" alt="Vista detalhada de um buraco negro supermassivo no centro de uma galáxia espiral. O buraco negro é uma esfera preta e estática, cercada por um disco de acreção brilhante em tons de laranja, dourado e azul-claro que gira ao seu redor. Jatos intensos de energia e luz disparam verticalmente dos polos do buraco negro em direção ao espaço profundo, cercado por milhões de estrelas e galáxias distantes.">
-<p>Por Erick Rubbo</p>
-<h2>Por que nem a luz consegue escapar de um buraco negro?</h2>
-<button>❤<span>0</span></button>
-<button>👎<span>0</span></button>
-</div>
-</main>
+
+    <!-- ESTRELAS -->
+    <div class="estrelas"></div>
+
+
+    <!-- MENU -->
+
+    <nav>
+
+        <div class="logo">
+            🌌 UNIVERSO
+        </div>
+
+        <div>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#curiosidades">Curiosidades</a>
+        </div>
+
+    </nav>
+
+
+    <!-- INÍCIO -->
+
+    <section class="inicio" id="inicio">
+
+        <h1>BURACOS NEGROS</h1>
+
+        <p>
+            Uma viagem pelo espaço para descobrir um dos fenômenos
+            mais misteriosos, fascinantes e extremos do Universo.
+        </p>
+
+
+        <div class="buraco-negro"></div>
+
+
+        <a href="#sobre" class="botao">
+            🚀 Explorar o Universo
+        </a>
+
+    </section>
+
+
+    <!-- CONTEÚDO -->
+
+    <main id="sobre">
+
+        <h2 class="titulo">
+            🌌 O que são Buracos Negros?
+        </h2>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>🕳️ O que é?</h3>
+
+                <p>
+                    Um buraco negro é uma região do espaço onde a gravidade
+                    é extremamente forte. Sua força gravitacional é tão grande
+                    que nem mesmo a luz consegue escapar.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>⭐ Como surgem?</h3>
+
+                <p>
+                    Alguns buracos negros podem surgir quando estrelas muito
+                    massivas chegam ao fim de suas vidas e sofrem um enorme
+                    colapso causado pela própria gravidade.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>⏳ O tempo</h3>
+
+                <p>
+                    Próximo a um objeto extremamente massivo, os efeitos
+                    previstos pela relatividade podem fazer o tempo passar
+                    de maneira diferente para observadores distantes.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🌌 Via Láctea</h3>
+
+                <p>
+                    No centro da nossa galáxia existe um buraco negro
+                    supermassivo chamado Sagittarius A*, com milhões de
+                    vezes a massa do Sol.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CURIOSIDADES -->
+
+        <section class="curiosidades" id="curiosidades">
+
+            <h2 class="titulo">
+                🔭 Curiosidades
+            </h2>
+
+
+            <div class="curiosidade">
+
+                <strong>01 — Eles não "sugam" tudo.</strong>
+
+                <p>
+                    Um buraco negro possui gravidade, assim como qualquer
+                    outro objeto com massa. A diferença é que, dentro de
+                    determinada região, a velocidade necessária para escapar
+                    ultrapassa a velocidade da luz.
+                </p>
+
+            </div>
+
+
+            <div class="curiosidade">
+
+                <strong>02 — Existem diferentes tamanhos.</strong>
+
+                <p>
+                    Existem buracos negros de massa estelar e também
+                    supermassivos, que podem possuir milhões ou bilhões
+                    de vezes a massa do Sol.
+                </p>
+
+            </div>
+
+
+            <div class="curiosidade">
+
+                <strong>03 — Eles podem colidir.</strong>
+
+                <p>
+                    Dois buracos negros podem orbitar um ao outro e,
+                    eventualmente, se fundir. Esses eventos podem produzir
+                    ondas gravitacionais.
+                </p>
+
+            </div>
+
+
+            <div class="curiosidade">
+
+                <strong>04 — A primeira imagem.</strong>
+
+                <p>
+                    Em 2019, cientistas divulgaram a primeira imagem
+                    de um buraco negro, obtida pelo Event Horizon Telescope.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- AVALIAÇÃO -->
+
+        <section class="avaliacao">
+
+            <h2>
+                ⭐ O que você achou do site?
+            </h2>
+
+
+            <div class="botoes">
+
+                <button onclick="like()">
+                    👍 Gostei
+                </button>
+
+                <button onclick="dislike()">
+                    👎 Não gostei
+                </button>
+
+            </div>
+
+
+            <div class="contadores">
+
+                <div>
+                    👍 <span id="likes">0</span>
+                </div>
+
+                <div>
+                    👎 <span id="dislikes">0</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <p>
+            🌌 Explorando os mistérios do Universo
+        </p>
+
+        <br>
+
+        <p>
+            feito por Erick Rubbo
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let likes = 0;
+        let dislikes = 0;
+
+
+        function like() {
+
+            likes++;
+
+            document.getElementById("likes").textContent = likes;
+
+        }
+
+
+        function dislike() {
+
+            dislikes++;
+
+            document.getElementById("dislikes").textContent = dislikes;
+
+        }
+
+    </script>
+
 
 </body>
-
-<script>
-  const botoes = document.querySelectorAll("button");
-
-  botoes.forEach(function(botao){
-    botao.addEventListener("click", botaoClicado);
-    function botaoClicado(){
-        console.log("fui clicado");
-        let texto = botao. querySelector("span");
-        texto.textContent++;
-  }
-})
-
-</script>
 
 </html>
